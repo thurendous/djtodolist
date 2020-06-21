@@ -1,0 +1,35 @@
+{% load static %}
+<!-- todolist/static/の中にあるファイルを読み込むためのもの -->
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- ここはtitleというブロックを作成、titleの部分は任意の名前 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'todolist/style.css' %}">
+</head>
+
+<body>
+
+    <div class="contents">
+        <header>
+            <div class="app-name">
+                <h1><a href="{% url 'index' %}">ToDoList on Django</a></h1>
+            </div>
+            <!-- ここはurlというindexを呼び出す→逆方向ディレクト -->
+        </header>
+
+        {% block contents %}{% endblock %}
+
+        <footer>
+            <div class="text-right">
+                <p>CopyRight@2020:Zengzhen Wu</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

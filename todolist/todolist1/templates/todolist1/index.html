@@ -1,0 +1,38 @@
+{% extends 'todolist1/base.html'%}
+<!-- base.html を継承している拡張する意味 -->
+{% block title %} ToDoList Top {% endblock%}
+<!-- base.htmlのtitleのブロックにToDoList Topという文字を代入する -->
+{% block contents %}
+<!-- contentsブロックに代入する内容 -->
+
+<article class="index">
+    <div class="page-name">
+        <h1>ToDoList</h1>
+    </div>
+    <div class="todolist">
+        <table class="tb-header">
+            <tr>
+                <th>Title</th>
+                <th>記入日</th>
+                <th>締め切り日</th>
+                <th>完了/未完了</th>
+            </tr>
+            {% for tdl in todolist %}
+            <tr class="tdl">
+                <td class="title">{{ tdl.title }}</td>
+                <td class="entry-date">{{ tdl.entryDate|date:"n/j" }}</td>
+                <td class="deadline">{{ tdl.deadline|date:"n/j" }}</td>
+                <td ckass="done">
+                    {% if tdl.done == False %}
+                    <label>未</label>
+                    {% elif tdl.done == True %}
+                    <label>済</label>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</article>
+{%endblock%}

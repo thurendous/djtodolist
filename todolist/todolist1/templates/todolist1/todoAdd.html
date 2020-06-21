@@ -1,0 +1,24 @@
+{% extends 'todolist1/base.html' %}
+
+{% block title %} ToDoAddForm {% endblock %}
+
+{% block contents %}
+
+<article class="todoadd">
+    <div class="page-name">
+        <h1>ToDo追加フォーム</h1>
+    </div>
+    <div class="todoadd-form">
+        <form action="{% url 'todoAdd' %}" method="post">
+            {% csrf_token%}
+            <!-- これは脆弱性を防ぐためのtokenでformを書くなら必ず必要なもの -->
+            {% for field in form%}
+            <div class="field-row">
+                {{ field.label_tag }}{{ field }}
+            </div>
+            {% endfor %}
+            <input type="submit" value="Add">
+        </form>
+    </div>
+</article>
+{% endblock %}
