@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.http import HttpResponse
@@ -22,7 +22,7 @@ def todoAdd(request):
     }
     if(request.method == 'POST'):
         mtdl = MyToDoList()
-        mtdl.title = request.POST('title')
+        mtdl.title = request.POST['title']
         mtdl.contents = request.POST['contents']
         mtdl.deadline = request.POST['deadline']
         mtdl.save()
